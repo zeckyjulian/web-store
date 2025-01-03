@@ -32,7 +32,7 @@
       <nav class="limiter-menu-desktop container">
         
         <!-- Logo desktop -->		
-        <a href="#" class="logo" style="height: 28px;">
+        <a href="home" class="logo" style="height: 28px;">
           <img src="/images/icons/julian-store-2.png" alt="IMG-LOGO" >
         </a>
 
