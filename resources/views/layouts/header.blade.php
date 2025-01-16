@@ -33,7 +33,7 @@
         
         <!-- Logo desktop -->		
         <a href="home" class="logo" style="height: 28px;">
-          <img src="/images/icons/julian-store-2.png" alt="IMG-LOGO" >
+          <img src="/images/icons/logo-01.png" alt="IMG-LOGO" >
         </a>
 
         <!-- Menu desktop -->
