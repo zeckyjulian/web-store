@@ -2,18 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Models\Product;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('home', [
-        'active' => 'home',
-        'title' => 'Home'
-    ]);
-});
-
+Route::get('/', [ProductController::class, 'index']);
 Route::get('/home', [ProductController::class, 'index']);
 
 Route::get('/product', function () {
@@ -23,12 +18,15 @@ Route::get('/product', function () {
     ]);
 });
 
-Route::get('/product-detail', function () {
-    return view('product-detail', [
-        'active' => 'product-detail',
-        'title' => 'Product Detail'
-    ]);
-});
+Route::get('/product-detail/{id}', [ProductController::class, 'product_detail']);
+
+// Route::get('/product-detail/{id}', function ($id) {
+//     return view('product-detail', [
+//         'active' => 'product-detail',
+//         'title' => 'Product Detail',
+//         'product' => Product::find($id)
+//     ]);
+// });
 
 Route::get('/shopping-cart', function () {
     return view('shopping-cart', [
