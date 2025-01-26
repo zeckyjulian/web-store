@@ -1,14 +1,16 @@
+<!-- Menambah data melalui tinker -->
+
 use App\Models\Product;
 use App\Models\Color;
 use App\Models\Size;
 use App\Models\ProductVariant;
 
 $product = Product::create([
-    'product_name' => 'Esprit Ruffle Shirt',
-    'slug' => 'esprit-ruffle-shirt',
-    'price' => 16.64,
+    'product_name' => 'Herschel supply',
+    'slug' => 'herschel-supply',
+    'price' => 35.31,
     'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente dolores quod maxime iusto, alias mollitia cupiditate eum tempora maiores ducimus accusamus omnis repudiandae impedit excepturi accusantium tenetur laborum distinctio porro.',
-    'image' => 'product-01.jpg',
+    'image' => 'product-02.jpg',
 ]);
 
 $color = Color::create([
@@ -29,3 +31,65 @@ Product::all();
 Color::all();
 Size::all();
 ProductVariant::all();
+
+<!-- Menambah Warna dan Ukuran yang baru melalui tinker -->
+
+$product = Product::find(1);
+
+$newColor = Color::create(['name' => 'Hijau']);
+$newSize = Size::create(['name' => 'XL']);
+
+$product->variants()->create([
+    'color_id' => $newColor->id,
+    'size_id' => $newSize->id,
+    'stock' => 25,
+]);
+
+<!-- Menambah banyak warna dan ukuran  -->
+
+use App\Models\Product;
+
+$product = Product::create([
+    'product_name' => 'Only Check Trouser',
+    'slug' => 'only-check-trouser',
+    'price' => 25.50,
+    'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente dolores quod maxime iusto, alias mollitia cupiditate eum tempora maiores ducimus accusamus omnis repudiandae impedit excepturi accusantium tenetur laborum distinctio porro.',
+    'image' => 'product-03.jpg',
+]);
+
+use App\Models\Color;
+use App\Models\Size;
+
+$color1 = Color::create(['color_name' => 'Blue']);
+$color2 = Color::create(['color_name' => 'Navy']);
+
+<!-- Jika sudah ada ukuran -->
+$size1 = Size::find(1);
+$size2 = Size::find(3);
+
+<!-- Jika Belum ada ukuran -->
+$size1 = Size::create(['size_name' => 'M']);
+$size2 = Size::create(['size_name' => 'L']);
+
+$product->variants()->createMany([
+    [
+        'color_id' => $color1->id,
+        'size_id' => $size1->id,
+        'stock' => 50,
+    ],
+    [
+        'color_id' => $color1->id,
+        'size_id' => $size2->id,
+        'stock' => 30,
+    ],
+    [
+        'color_id' => $color2->id,
+        'size_id' => $size1->id,
+        'stock' => 40,
+    ],
+    [
+        'color_id' => $color2->id,
+        'size_id' => $size2->id,
+        'stock' => 20,
+    ],
+]);

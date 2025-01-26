@@ -18,11 +18,11 @@ class ProductVariant extends Model
 
     public function color()
     {
-        return $this->belongsTo(Color::class);
+        return $this->belongsTo(Color::class)->orderBy('id', 'desc');
     }
 
     public function size()
     {
-        return $this->belongsTo(Size::class);
+        return $this->belongsTo(Size::class)->orderBy('id', 'desc');
     }
 }
