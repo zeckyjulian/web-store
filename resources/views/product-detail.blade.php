@@ -90,7 +90,10 @@
                 <div class="rs1-select2 bor8 bg0">
                   <select class="js-select2" name="time">
                     <option>Choose an option</option>
-                    @foreach ($product->variants as $size)
+                    @php
+                      $variants = $product->variants->sortBy('size.id');
+                    @endphp
+                    @foreach ($variants as $size)
                         <option value="{{ $size->size->size_name }}">{{ $size->size->size_name }}</option>
                     @endforeach
                   </select>
