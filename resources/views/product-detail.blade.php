@@ -90,11 +90,8 @@
                 <div class="rs1-select2 bor8 bg0">
                   <select class="js-select2" name="time">
                     <option>Choose an option</option>
-                    @php
-                      $variants = $product->variants->sortBy('size.id');
-                    @endphp
-                    @foreach ($variants as $size)
-                        <option value="{{ $size->size->size_name }}">{{ $size->size->size_name }}</option>
+                    @foreach ($uniqueSizes->sortBy('size.id') as $variant)
+                        <option value="{{ $variant->size->size_name }}">{{ $variant->size->size_name }}</option>
                     @endforeach
                   </select>
                   <div class="dropDownSelect2"></div>
@@ -111,8 +108,8 @@
                 <div class="rs1-select2 bor8 bg0">
                   <select class="js-select2" name="time">
                     <option>Choose an option</option>
-                    @foreach ($product->variants as $color)
-                        <option value="{{ $color->color->color_name }}">{{ $color->color->color_name }}</option>
+                    @foreach ($uniqueColors->sortBy('color.id') as $variant)
+                        <option value="{{ $variant->color->color_name }}">{{ $variant->color->color_name }}</option>
                     @endforeach
                   </select>
                   <div class="dropDownSelect2"></div>

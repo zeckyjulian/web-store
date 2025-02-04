@@ -18,7 +18,7 @@ Route::get('/product', function () {
     ]);
 });
 
-Route::get('/product-detail/{id}', [ProductController::class, 'product_detail']);
+Route::get('/product-detail/{product:slug}', [ProductController::class, 'product_detail']);
 
 // Route::get('/product-detail/{id}', function ($id) {
 //     return view('product-detail', [

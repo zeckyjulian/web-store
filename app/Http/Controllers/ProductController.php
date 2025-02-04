@@ -31,14 +31,31 @@ class ProductController extends Controller
     //     ]);
     // }
 
-    public function product_detail($id)
+    // public function product_detail($id)
+    // {
+    //     $product = Product::find($id);
+    //     $product2 = Product::with('variants.color', 'variants.size')->find($id);
+    //     return view('product-detail', [
+    //         'active' => 'product-detail',
+    //         'title' => 'Product Detail',
+    //         'product' => $product
+    //     ]);
+    // }
+
+    public function product_detail(Product $product)
     {
-        $product = Product::find($id);
-        $product2 = Product::with('variants.color', 'variants.size')->find($id);
+        $uniqueColors = $product->variants->unique(function ($variant) {
+            return $variant->color->color_name;
+        });
+        $uniqueSizes = $product->variants->unique(function ($variant) {
+            return $variant->size->size_name;
+        });
         return view('product-detail', [
             'active' => 'product-detail',
             'title' => 'Product Detail',
-            'product' => $product
+            'product' => $product,
+            'uniqueColors' => $uniqueColors,
+            'uniqueSizes' => $uniqueSizes
         ]);
     }
 }
