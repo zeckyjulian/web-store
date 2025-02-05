@@ -24,4 +24,9 @@ class Product extends Model
     {
         return $this->hasMany(ProductVariant::class)->orderBy('id', 'desc');
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

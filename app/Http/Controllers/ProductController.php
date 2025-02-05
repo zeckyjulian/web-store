@@ -22,18 +22,6 @@ class ProductController extends Controller
     // public function product_detail($id)
     // {
     //     $product = Product::find($id);
-    //     $sizes = json_decode($product->size);
-    //     return view('product-detail', [
-    //         'active' => 'product-detail',
-    //         'title' => 'Product Detail',
-    //         'product' => Product::find($id),
-    //         'sizes' => $sizes,
-    //     ]);
-    // }
-
-    // public function product_detail($id)
-    // {
-    //     $product = Product::find($id);
     //     $product2 = Product::with('variants.color', 'variants.size')->find($id);
     //     return view('product-detail', [
     //         'active' => 'product-detail',

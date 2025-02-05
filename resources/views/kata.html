@@ -7,6 +7,7 @@ use App\Models\ProductVariant;
 
 $product = Product::create([
     'product_name' => 'Converse All Star Hi Plimsolls',
+    'category_id' => 3,
     'slug' => 'converse-all-star-hi-plimsolls',
     'price' => 75.00,
     'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente dolores quod maxime iusto, alias mollitia cupiditate eum tempora maiores ducimus accusamus omnis repudiandae impedit excepturi accusantium tenetur laborum distinctio porro.',
@@ -18,13 +19,13 @@ $color = Color::create([
 ]);
 
 $size = Size::create([
-    'size_name' => 'S',
+    'size_name' => 'XL',
 ]);
 
 $product->variants()->create([
     'color_id' => $color->id,
     'size_id' => $size->id,
-    'stock' => 10,
+    'stock' => 20,
 ]);
 
 Product::all();
@@ -34,15 +35,15 @@ ProductVariant::all();
 
 <!-- Menambah Warna dan Ukuran yang baru melalui tinker -->
 
-$product = Product::find(4);
+$product = Product::find(3);
 
-$size = Size::find(4);
-$color = Color::find(4);
+$size = Size::find(2);
+$color = Color::find(2);
 
 $product->variants()->create([
     'color_id' => $color->id,
     'size_id' => $size->id,
-    'stock' => 25,
+    'stock' => 45,
 ]);
 
 $newColor = Color::create(['name' => 'Hijau']);
@@ -101,4 +102,9 @@ $product->variants()->createMany([
         'size_id' => $size2->id,
         'stock' => 20,
     ],
+]);
+
+Category::create([
+    'category_name' => 'Shoes',
+    'slug' => 'shoes',
 ]);

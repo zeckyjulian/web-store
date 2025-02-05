@@ -47,8 +47,12 @@
               <a href="/product">Shop</a>
             </li>
 
-            <li class="label1 {{ ($active === "shopping-cart") ? 'active-menu' : '' }}" data-label1="hot">
-              <a href="/shopping-cart">Features</a>
+            <li class="label1 {{ ($active === "features") ? 'active-menu' : '' }} {{ ($active === "category") ? 'active-menu' : '' }}"" data-label1="hot">
+              <a href="/features">Features</a>
+            </li>
+
+            <li class="{{ ($active === "shopping-cart") ? 'active-menu' : '' }}">
+              <a href="/shopping-cart">Shopping Cart</a>
             </li>
 
             <li class="{{ ($active === "blog") ? 'active-menu' : '' }} {{ ($active === "blog-detail") ? 'active-menu' : '' }}">

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
+use App\Models\Category;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -31,7 +32,24 @@ Route::get('/product-detail/{product:slug}', [ProductController::class, 'product
 Route::get('/shopping-cart', function () {
     return view('shopping-cart', [
         'active' => 'shopping-cart',
-        'title' => 'Features'
+        'title' => 'Shopping Cart'
+    ]);
+});
+
+Route::get('/features', function () {
+    return view('features', [
+        'active' => 'features',
+        'title' => 'Features',
+        'categories' => Category::all()
+    ]);
+});
+
+Route::get('/categories/{category:slug}', function (Category $category) {
+    return view('category', [
+        'active' => 'category',
+        'title' => 'Categories',
+        'category' => $category->category_name,
+        'products' => $category->products
     ]);
 });
 
