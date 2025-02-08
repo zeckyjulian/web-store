@@ -14,7 +14,7 @@
     <div class="container">
       <div class="row">
         @foreach($categories as $category)
-        <div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
+        <div class="col-md-6 col-xl-4 p-b-30">
           <!-- Block1 -->
           <div class="block1 wrap-pic-w">
             <img src="images/{{ $category->image }}" alt="IMG-BANNER">
