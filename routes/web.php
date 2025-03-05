@@ -12,12 +12,7 @@ use App\Models\Category;
 Route::get('/', [ProductController::class, 'index']);
 Route::get('/home', [ProductController::class, 'index']);
 
-Route::get('/product', function () {
-    return view('product', [
-        'active' => 'product',
-        'title' => 'Shop'
-    ]);
-});
+Route::get('/product', [ProductController::class, 'product']);
 
 Route::get('/product-detail/{product:slug}', [ProductController::class, 'product_detail']);
 
@@ -45,10 +40,9 @@ Route::get('/features', function () {
 });
 
 Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('category', [
+    return view('product', [
         'active' => 'category',
-        'title' => 'Categories',
-        'category' => $category->category_name,
+        'title' => $category->category_name,
         'products' => $category->products
     ]);
 });

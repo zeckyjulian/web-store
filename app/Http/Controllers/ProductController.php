@@ -15,6 +15,15 @@ class ProductController extends Controller
         return view('home', [
             'title' => 'Home',
             'active' => 'home',
+            'products' => Product::with(['category'])->latest()->get()
+        ]);
+    }
+
+    public function product()
+    {
+        return view('product', [
+            'active' => 'product',
+            'title' => 'Shop',
             'products' => Product::all()
         ]);
     }
