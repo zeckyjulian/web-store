@@ -1,5 +1,22 @@
 @extends('layouts.main')
 
+<style>
+  .pagination-wrapper a {
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.pagination-wrapper a:hover {
+    background-color: #555;
+}
+
+</style>
+
 @section('container')
 <div class="bg0 m-t-23 p-b-140">
   <div class="container">
@@ -295,10 +312,8 @@
       </div>
 
       <!-- Load more -->
-      <div class="flex-c-m flex-w w-full p-t-45">
-        <a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-          Load More
-        </a>
+      <div class="pagination-wrapper">
+        {{ $products->links('pagination.simple-prev-next') }}
       </div>
 
     @else

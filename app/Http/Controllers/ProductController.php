@@ -25,7 +25,7 @@ class ProductController extends Controller
         return view('product', [
             'active' => 'product',
             'title' => 'Shop',
-            'products' => Product::latest()->filter(request(['search-product', 'category']))->paginate(12)->withQueryString(),
+            'products' => Product::latest()->filter(request(['search-product', 'category']))->paginate(12)->withQueryString()->onEachSide(0),
             'selectedCategory' => Category::firstWhere('category_name', request('category'))
         ]);
     }
