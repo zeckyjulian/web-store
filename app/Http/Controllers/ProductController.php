@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Color;
@@ -15,7 +16,7 @@ class ProductController extends Controller
         return view('home', [
             'title' => 'Home',
             'active' => 'home',
-            'products' => Product::with(['category'])->latest()->get()
+            'products' => Product::latest()->filter(request(['search-product']))->get(),
         ]);
     }
 
@@ -24,7 +25,8 @@ class ProductController extends Controller
         return view('product', [
             'active' => 'product',
             'title' => 'Shop',
-            'products' => Product::all()
+            'products' => Product::latest()->filter(request(['search-product', 'category']))->paginate(12)->withQueryString(),
+            'selectedCategory' => Category::firstWhere('category_name', request('category'))
         ]);
     }
 

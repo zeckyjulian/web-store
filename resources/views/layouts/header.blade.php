@@ -40,7 +40,7 @@
         <div class="menu-desktop">
           <ul class="main-menu">
             <li class="{{ ($active === "home") ? 'active-menu' : '' }}">
-              <a href="/home">Home</a>
+              <a href="/">Home</a>
             </li>
 
             <li class="{{ ($active === "product") ? 'active-menu' : '' }} {{ ($active === "product-detail") ? 'active-menu' : '' }}">
@@ -91,7 +91,7 @@
   <div class="wrap-header-mobile">
     <!-- Logo moblie -->		
     <div class="logo-mobile">
-      <a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+      <a href="/"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
     </div>
 
     <!-- Icon header -->
@@ -148,32 +148,36 @@
       </li>
     </ul>
 
-    <ul class="main-menu-m">
+    <ul class="main-menu-m" style="background-color: #222;">
       <li>
-        <a href="/home">Home</a>
+        <a href="/">Home</a>
         <span class="arrow-main-menu-m">
           <i class="fa fa-angle-right" aria-hidden="true"></i>
         </span>
       </li>
 
       <li>
-        <a href="product.html">Shop</a>
+        <a href="/product">Shop</a>
       </li>
 
       <li>
-        <a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
+        <a href="/features" class="label1 rs1" data-label1="hot">Features</a>
       </li>
 
       <li>
-        <a href="blog.html">Blog</a>
+        <a href="/shoping-cart">Features</a>
       </li>
 
       <li>
-        <a href="about.html">About</a>
+        <a href="/blog">Blog</a>
       </li>
 
       <li>
-        <a href="contact.html">Contact</a>
+        <a href="/about">About</a>
+      </li>
+
+      <li>
+        <a href="/contact">Contact</a>
       </li>
     </ul>
   </div>

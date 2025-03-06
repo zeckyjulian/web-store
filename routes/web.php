@@ -10,7 +10,7 @@ use App\Models\Category;
 // });
 
 Route::get('/', [ProductController::class, 'index']);
-Route::get('/home', [ProductController::class, 'index']);
+Route::get('/home',function () {return redirect('/');}, [ProductController::class, 'index']);
 
 Route::get('/product', [ProductController::class, 'product']);
 
@@ -36,14 +36,6 @@ Route::get('/features', function () {
         'active' => 'features',
         'title' => 'Features',
         'categories' => Category::all()
-    ]);
-});
-
-Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('product', [
-        'active' => 'category',
-        'title' => $category->category_name,
-        'products' => $category->products
     ]);
 });
 

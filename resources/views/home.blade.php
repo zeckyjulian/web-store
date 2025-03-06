@@ -176,7 +176,7 @@
         <div class="block1 wrap-pic-w">
           <img src="images/banner-01.jpg" alt="IMG-BANNER">
 
-          <a href="/categories/women" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+          <a href="/product?category=women" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
             <div class="block1-txt-child1 flex-col-l">
               <span class="block1-name ltext-102 trans-04 p-b-8">
                 Women
@@ -201,7 +201,7 @@
         <div class="block1 wrap-pic-w">
           <img src="images/banner-02.jpg" alt="IMG-BANNER">
 
-          <a href="/categories/men" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+          <a href="/product?category=men" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
             <div class="block1-txt-child1 flex-col-l">
               <span class="block1-name ltext-102 trans-04 p-b-8">
                 Men
@@ -226,7 +226,7 @@
         <div class="block1 wrap-pic-w">
           <img src="images/banner-03.jpg" alt="IMG-BANNER">
 
-          <a href="/categories/accessories" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+          <a href="/product?category=accessories" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
             <div class="block1-txt-child1 flex-col-l">
               <span class="block1-name ltext-102 trans-04 p-b-8">
                 Accessories
@@ -302,13 +302,15 @@
       
       <!-- Search product -->
       <div class="dis-none panel-search w-full p-t-10 p-b-15">
-        <div class="bor8 dis-flex p-l-15">
-          <button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
-            <i class="zmdi zmdi-search"></i>
-          </button>
+        <form action="/">
+            <div class="bor8 dis-flex p-l-15">
+            <button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04" type="submit">
+              <i class="zmdi zmdi-search"></i>
+            </button>
 
-          <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
-        </div>	
+            <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
+          </div>	
+        </form>
       </div>
 
       <!-- Filter -->
@@ -535,7 +537,7 @@
 
     <!-- Load more -->
     <div class="flex-c-m flex-w w-full p-t-45">
-      <a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+      <a href="/product" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
         Load More
       </a>
     </div>
