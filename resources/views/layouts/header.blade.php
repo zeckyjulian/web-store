@@ -1,4 +1,18 @@
 <header class="{{ ($active != "home") ? 'header-v4' : '' }}">
+
+  <style>
+    .main-menu .badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background-color: #717fe0;
+      color: white;
+      border-radius: 50%;
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+  </style>
+
   <!-- Header desktop -->
   <div class="container-menu-desktop">
     <!-- Topbar -->
@@ -9,19 +23,15 @@
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+						<a href="#" class="flex-c-m trans-04 p-lr-25 text-decoration-none">
 							Help & FAQs
 						</a>
 
-						<a href="/login" class="flex-c-m trans-04 p-lr-25">
-							My Account
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+						<a href="#" class="flex-c-m trans-04 p-lr-25 text-decoration-none">
 							EN
 						</a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+						<a href="#" class="flex-c-m trans-04 p-lr-25 text-decoration-none">
 							USD
 						</a>
 					</div>
@@ -40,48 +50,93 @@
         <div class="menu-desktop">
           <ul class="main-menu">
             <li class="{{ ($active === "home") ? 'active-menu' : '' }}">
-              <a href="/">Home</a>
+              <a class="text-decoration-none" href="/">Home</a>
             </li>
 
             <li class="{{ ($active === "product") ? 'active-menu' : '' }} {{ ($active === "product-detail") ? 'active-menu' : '' }}">
-              <a href="/product">Shop</a>
+              <a class="text-decoration-none" href="/product">Shop</a>
             </li>
 
             <li class="label1 {{ ($active === "features") ? 'active-menu' : '' }} {{ ($active === "category") ? 'active-menu' : '' }}"" data-label1="hot">
-              <a href="/features">Features</a>
+              <a class="text-decoration-none" href="/features">Features</a>
             </li>
 
             <li class="{{ ($active === "shopping-cart") ? 'active-menu' : '' }}">
-              <a href="/shopping-cart">Shopping Cart</a>
+              <a class="text-decoration-none" href="/shopping-cart">Shopping Cart</a>
             </li>
 
             <li class="{{ ($active === "blog") ? 'active-menu' : '' }} {{ ($active === "blog-detail") ? 'active-menu' : '' }}">
-              <a href="/blog">Blog</a>
+              <a class="text-decoration-none" href="/blog">Blog</a>
             </li>
 
             <li class="{{ ($active === "about") ? 'active-menu' : '' }}">
-              <a href="/about">About</a>
+              <a class="text-decoration-none" href="/about">About</a>
             </li>
 
             <li class="{{ ($active === "contact") ? 'active-menu' : '' }}">
-              <a href="/contact">Contact</a>
+              <a class="text-decoration-none" href="/contact">Contact</a>
             </li>
           </ul>
         </div>	
 
         <!-- Icon header -->
         <div class="wrap-icon-header flex-w flex-r-m">
-          <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-            <i class="zmdi zmdi-search"></i>
-          </div>
+          <ul class="main-menu">
+            <li class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+              <i class="zmdi zmdi-search"></i>
+            </li>
 
-          <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="3">
-            <i class="zmdi zmdi-shopping-cart"></i>
-          </div>
+            <li>
+              @auth
+                <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
+                  <i class="zmdi zmdi-shopping-cart fs-26"></i>
+                  <span class="badge">3</span>
+                </a>
+              @else
+                <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
+                  <i class="zmdi zmdi-shopping-cart fs-26"></i>
+                </a>
+              @endauth
+            </li>
 
-          <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
-            <i class="zmdi zmdi-favorite-outline"></i>
-          </a>
+            <li>
+              @auth
+                <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+                  <i class="zmdi zmdi-favorite-outline fs-26"></i>
+                  <span class="badge">3</span>
+                </a>
+              @else
+                <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+                  <i class="zmdi zmdi-favorite-outline fs-26"></i>
+                </a>
+              @endauth
+            </li>
+
+            <li>
+              @auth
+              <a href="/account" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+                <i class="zmdi zmdi-account fs-26"></i>
+              </a>
+              <ul class="sub-menu">
+                <li><a href="/account">Profile</a></li>
+                <li><a href="/setting">Setting</a></li>
+                <li>
+                  <form action="/logout" method="POST">
+                    @csrf
+                    <a><button class="hov-cl1" type="submit">Log-out</button></a>
+                  </form>
+                </li>
+              </ul>
+              @else
+              <a href="/login" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+                <i class="zmdi zmdi-account fs-26"></i>
+              </a>
+              <ul class="sub-menu">
+                <li><a href="/login">Log-in</a></li>
+              </ul>
+              @endauth
+            </li>
+          </ul>
         </div>
       </nav>
     </div>	

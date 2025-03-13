@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 // use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -40,5 +41,31 @@ class LoginController extends Controller
         User::create($validatedData);
 
         return redirect('/login')->with('success', 'Registration success! Please login.');
+    }
+
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email:dns',
+            'password' => 'required'
+        ]);
+
+        if(Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/dashboard');
+        }
+
+        return back()->with('loginError', 'Login failed! Please check your E-mail or Password.');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        request()->session()->invalidate();
+
+        request()->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

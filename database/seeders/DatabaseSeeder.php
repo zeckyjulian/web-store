@@ -55,7 +55,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'bags',
         ]);
 
-        Product::factory(10)->create();
+        Product::factory(25)->create();
 
         Color::factory(10)->create();
 
@@ -75,7 +75,7 @@ class DatabaseSeeder extends Seeder
             'size_name' => 'XL',
         ]);
 
-        ProductVariant::factory(10)->create();
+        ProductVariant::factory(30)->create();
 
         // $product = Product::create([
         //     'product_name' => 'Esprit Ruffle Shirt',
