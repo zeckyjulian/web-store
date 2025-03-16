@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Admin;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Size;
@@ -19,6 +20,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(5)->create();
+        Admin::factory(1)->create();
 
         // User::factory()->create([
         //     'name' => 'Test User',

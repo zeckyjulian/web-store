@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LoginAdminController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Middleware\AdminMiddleware;
 use App\Models\Category;
 
 // Route::get('/', function () {
@@ -67,4 +69,9 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [LoginController::class, 'register'])->middleware('guest');
 Route::post('/register', [LoginController::class, 'store']);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/adm/login', [LoginAdminController::class, 'index'])->name('admin.login');
+Route::post('/adm/login', [LoginAdminController::class, 'authenticate']);
+
+Route::get('/dashboard', function() {
+    return view('dashboard.index');
+})->middleware(AdminMiddleware::class);
